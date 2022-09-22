@@ -6,8 +6,7 @@ export function app(selector, option = {}) {
 
   function reStart(arr) {
     arr.forEach((item) => {
-      item.classList.remove('invis')
-      item.removeAttribute('data-done')
+      item.remove()
     })
   }
 
@@ -33,6 +32,8 @@ export function app(selector, option = {}) {
               cards.append(btn)
               btn.addEventListener('click', () => {
                 reStart(document.querySelectorAll('[data-done="true"]'))
+                app(selector, option).shuffle()
+                app(selector, option).create()
                 cards.removeChild(btn)
               })
 
